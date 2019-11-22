@@ -1,0 +1,34 @@
+{
+  "name": "DigitalMuret",
+  "version": "1.0.0",
+  "description": "Un thème omeka s devéloppé pour le programme de recherche « Digital Muret » de l'INHA)",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/INHAParis/"
+  },
+  "keywords": [
+    "omeka-s",
+    "theme"
+  ],
+  "author": "FN",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/INHAParis/"
+  },
+  "homepage": "https://github.com/INHAParis/",
+  "devDependencies": {
+    "autoprefixer": "^9.2.1",
+    "gulp": "^4.0.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "susy": "^2.2.12"
+  },
+  "browserslist": [
+    "> 5%",
+    "> 1% in US"
+  ]
+}

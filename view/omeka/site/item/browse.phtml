@@ -1,0 +1,68 @@
+<?php
+$escape = $this->plugin('escapeHtml');
+$translate = $this->plugin('translate');
+
+$this->htmlElement('body')->appendAttribute('class', 'item resource browse');
+
+$query = $this->params()->fromQuery();
+
+$sortHeadings = [
+    [
+        'label' => $translate('Title'),
+        'value' => 'dcterms:title'
+    ],
+    [
+        'label' => $translate('Identifier'),
+        'value' => 'dcterms:identifier'
+    ],
+    [
+        'label' => $translate('Created'),
+        'value' => 'created'
+    ],
+    [
+        'label' => $translate('Type'),
+        'value' => 'dcterms:type'
+    ],
+];
+
+?>
+<?php if (isset($itemSet)): ?>
+<?php $this->htmlElement('body')->appendAttribute('class', 'item-set');
+    $query['item_set_id'] = $itemSet->id(); ?>
+<?php endif; ?>
+<?php echo $this->searchFilters(); ?>
+
+<div class="browse-controls">
+    <?php echo $this->pagination(); ?>
+    <?php echo $this->hyperlink($translate('Advanced search'), $this->url('site/resource', ['controller' => 'item', 'action' => 'search'], ['query' => $query], true), ['class' => 'advanced-search']); ?>
+    <?php echo $this->sortSelector($sortHeadings); ?>
+</div>
+<ul class="resource-list">
+    <?php foreach ($items as $item): ?>
+    <li class="item resource">
+        <?php if ($thumbnail = $this->thumbnail($item, 'medium')): ?>
+        <?php echo '<center>'; echo $item->linkRaw($thumbnail); echo '</center>';?>
+        <?php endif; ?>
+        <h4><?php echo $item->link($item->displayTitle()); ?></h4>
+        <p class="customType"><b><?php echo $item->value('dcterms:type'); ?></b></p>
+        </br>
+        <?php if ($description = $item->value('dcterms:description')): ?>
+        <div class="description"><?php echo substr($description,0,75); echo $item->link('...'); ?></div></br>
+        <?php endif; ?>
+        <?php if ($location = $item->value('vra:locationCreationSite')): ?>
+        <div class="customLocalisation"><?php echo '<img title="Lieu de création" src="https://digitalmuret.inha.fr/themes/sardinia/asset/img/compass_icon.png" />'; ?></div>
+        <?php endif; ?>
+        <?php if ($discovery = $item->value('vra:locationDiscoverySite')): ?>
+        <div class="customLocalisation"><?php echo '<img title="Lieu de découverte" src="https://digitalmuret.inha.fr/themes/sardinia/asset/img/trowel2_icon.png" />'; ?></div>
+        <?php endif; ?>
+        <?php if ($creation = $item->value('schema:location')): ?>
+        <div class="customLocalisation"><?php echo '<img title="Lieu de conservation" src="https://digitalmuret.inha.fr/themes/sardinia/asset/img/musee2_icon.png" />'; ?></div>
+        <?php endif; ?>
+        <?php if ($date = $item->value('dcterms:date')): ?>
+        <div class="date"><?php echo $date; ?></div>
+        <?php endif; ?>
+    </li>
+    <?php endforeach; ?>
+</ul>
+<?php echo $this->pagination(); ?>
+<?php $this->trigger('view.browse.after'); ?>

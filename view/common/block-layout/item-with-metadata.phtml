@@ -1,0 +1,28 @@
+<div class="item-with-metadata">
+<?php foreach($attachments as $attachment): ?>
+    <?php $item = $attachment->item(); ?>
+    <?php if($item->media()): ?>
+        <div class="media-list"><center>
+        <?php
+        foreach ($item->media() as $media):
+            echo $media->linkRaw($this->thumbnail($media, 'square', ['title' => $media->displayTitle()]), null, [
+                'class' => 'media resource'
+            ]);
+        endforeach;
+        ?>
+        </center></div>
+    <?php endif; ?>
+    <?php if (empty($item)) continue; ?>
+    <div class="resource show">
+    <?php echo $item->displayValues(); ?>
+    <?php if($item->itemSets()): ?>
+        <div class="property">
+            <h4><?php echo $this->translate('Item sets'); ?></h4>
+            <?php foreach ($item->itemSets() as $itemSet): ?>
+            <div class="value"><?php echo $itemSet->link($itemSet->displayTitle()); ?></div>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+    </div>
+<?php endforeach; ?>
+</div>

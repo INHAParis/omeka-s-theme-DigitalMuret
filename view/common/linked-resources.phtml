@@ -1,0 +1,40 @@
+<?php
+$escape = $this->plugin('escapeHtml');
+$fragment = 'item-linked';
+if ('Omeka\Api\Representation\ItemSetRepresentation' === get_class($objectResource)) {
+    $fragment = 'item-set-linked';
+}
+$pagination = $this->pagination(null, $totalCount, $page, $perPage);
+$pagination->setFragment($fragment);
+?>
+<div id="linked-resources">
+<?php foreach ($subjectValues as $term => $values): ?>
+<table>
+<tbody>
+    <?php foreach ($values as $value): ?>
+    <?php
+    $template = $value->resource()->resourceTemplate();
+    $templateProperty = $template ? $template->resourceTemplateProperty($value->property()->Id()) : null;
+    $altLabel = $templateProperty ? $templateProperty->alternateLabel() : null;
+    ?>
+    <tr class="linked-resource">
+        <td><?php echo $value->resource()->linkPretty(); ?></td>
+    </tr>
+    <?php endforeach; ?>
+</tbody>
+</table>
+<?php endforeach; ?>
+
+<?php echo ($totalCount > $perPage) ? '<div class="linked-footer">' . $pagination . '</div>' : ''; ?>
+
+</div>
+
+<script>
+$('#filter-property').on('change', function(e) {
+    var thisSelect = $(this);
+    var property = thisSelect.find(':selected').val();
+    var url = thisSelect.data('url');
+    var fragment = thisSelect.data('fragment');
+    window.location = url + '?' + $.param({property: property}) + '#' + fragment;
+});
+</script>
