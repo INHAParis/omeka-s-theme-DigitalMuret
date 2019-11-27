@@ -1,2 +1,2 @@
 # omeka-s-theme-DigitalMuret
- DigitalMuret theme for Omeka S
+ [DigitalMuret](https://digitalmuret.inha.fr/s/digital-muret/page/accueil) theme for [Omeka S](https://omeka.org/s/)
