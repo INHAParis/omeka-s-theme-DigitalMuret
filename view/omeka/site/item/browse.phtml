@@ -8,6 +8,10 @@ $query = $this->params()->fromQuery();
 
 $sortHeadings = [
     [
+        'label' => $translate('Type'),
+        'value' => 'dcterms:type'
+    ],
+    [
         'label' => $translate('Title'),
         'value' => 'dcterms:title'
     ],
@@ -15,14 +19,10 @@ $sortHeadings = [
         'label' => $translate('Identifier'),
         'value' => 'dcterms:identifier'
     ],
-    [
+/*    [
         'label' => $translate('Created'),
         'value' => 'created'
-    ],
-    [
-        'label' => $translate('Type'),
-        'value' => 'dcterms:type'
-    ],
+    ], */
 ];
 
 ?>
@@ -40,26 +40,27 @@ $sortHeadings = [
 <ul class="resource-list">
     <?php foreach ($items as $item): ?>
     <li class="item resource">
+        <?php if ($volumeNumber = $item->value('schema:volumeNumber')): ?>
+        <div class="volumeNumber"><?php echo 'Vol. n° ' ?><?php echo $volumeNumber; ?></div>
+        <?php endif; ?>
         <?php if ($thumbnail = $this->thumbnail($item, 'medium')): ?>
         <?php echo '<center>'; echo $item->linkRaw($thumbnail); echo '</center>';?>
         <?php endif; ?>
-        <h4><?php echo $item->link($item->displayTitle()); ?></h4>
-        <p class="customType"><b><?php echo $item->value('dcterms:type'); ?></b></p>
-        </br>
-        <?php if ($description = $item->value('dcterms:description')): ?>
-        <div class="description"><?php echo substr($description,0,75); echo $item->link('...'); ?></div></br>
-        <?php endif; ?>
+        <div class="customIcones">
         <?php if ($location = $item->value('vra:locationCreationSite')): ?>
-        <div class="customLocalisation"><?php echo '<img title="Lieu de création" src="https://digitalmuret.inha.fr/themes/sardinia/asset/img/compass_icon.png" />'; ?></div>
+        <div class="customLocalisation"><?php echo '<img title="Lieu de création : '?><?php echo $location ?><?php echo '" src="https://digitalmuret.inha.fr/themes/DigitalMuret/asset/img/compass_icon.png" />'; ?></div>
         <?php endif; ?>
         <?php if ($discovery = $item->value('vra:locationDiscoverySite')): ?>
-        <div class="customLocalisation"><?php echo '<img title="Lieu de découverte" src="https://digitalmuret.inha.fr/themes/sardinia/asset/img/trowel2_icon.png" />'; ?></div>
+        <div class="customLocalisation"><?php echo '<img title="Lieu de découverte : '?><?php echo $discovery ?><?php echo '" src="https://digitalmuret.inha.fr/themes/DigitalMuret/asset/img/trowel2_icon.png" />'; ?></div>
         <?php endif; ?>
         <?php if ($creation = $item->value('schema:location')): ?>
-        <div class="customLocalisation"><?php echo '<img title="Lieu de conservation" src="https://digitalmuret.inha.fr/themes/sardinia/asset/img/musee2_icon.png" />'; ?></div>
+        <div class="customLocalisation"><?php echo '<img title="Lieu de conservation : '?><?php echo $creation ?><?php echo '" src="https://digitalmuret.inha.fr/themes/DigitalMuret/asset/img/musee2_icon.png" />'; ?></div>
         <?php endif; ?>
-        <?php if ($date = $item->value('dcterms:date')): ?>
-        <div class="date"><?php echo $date; ?></div>
+        </div>
+        <p class="customType"><b><?php echo $item->value('dcterms:type'); ?></b></p>
+        <div class='browseTitre'><center><h4><?php echo $item->link($item->displayTitle()); ?></h4></center></div>
+        <?php if ($description = $item->value('dcterms:description')): ?>
+        <div class="description"><?php echo mb_substr($description,0,75); echo $item->link('...'); ?></div></br>
         <?php endif; ?>
     </li>
     <?php endforeach; ?>
