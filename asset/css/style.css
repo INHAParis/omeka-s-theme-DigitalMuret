@@ -186,6 +186,165 @@ textarea {
   -webkit-appearance: button;
   font: inherit
 }
+.resource-list img {
+  max-width: 200px;
+  height: 200px;
+  object-fit: scale-down;
+  width: 200px;
+  background-color: #eee8d4
+}
+.site-page-pagination {
+  display: none
+}
+.linked-resource:hover {
+  background-color: rgba(96, 171, 157, 0.5)
+}
+.reference-heading {
+  color: darkred !important
+}
+.reference-heading a {
+  color: darkred !important
+}
+.add-value {
+  background-color: rgba(69, 179, 157, 0.3) !important;
+  margin-bottom: 12px
+}
+.opaque {
+  color: rgba(69, 179, 157, 0.6);
+  border-top: solid 1px;
+  padding-bottom: 20px;
+  padding-top: 20px
+}
+iframe {
+  -ms-appareance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border-width: 0px;
+  border-style: none !important;
+  border-color: initial;
+  border-image: initial;
+}
+.customIcones {
+  height: 25px;
+}
+.customLocalisation {
+  display: inline;
+  color: #60AB9D
+}
+.customType {
+  text-align: center;
+}
+header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 100;
+}
+.imageIntroAccueil {
+  height: 250px;
+  width: 250px;
+  object-fit: scale-down;
+  background-color: #eee8d4
+}
+#comment-main-container textarea {
+  height: 75px;
+  width: 400px;
+  margin-bottom: 20px
+}
+#comment-main-container input {
+  width: 400px;
+  margin-bottom: 5px
+}
+button {
+  -ms-appeareance: none;
+  -webkit-appeareance: none;
+  -moz-appeareance: none;
+  margin-bottom: 20px;
+  font-family: 'Font Awesome 5 free', 'Lato', sans-serif !important
+}
+.tagging-form input {
+  width: 400px
+}
+ul a[href="#"] {
+  color: #DCDCDC !important;
+}
+.sub-menu ul a[href="#"]:hover {
+  cursor: not-allowed
+}
+.leaflet-popup-content-wrapper img {
+  width: 200px;
+  height: 200px;
+  object-fit: scale-down;
+  background-color: #eee8d4
+}
+.customLocalisation img {
+  height: 20px !important;
+  width: 20px !important;
+  background-color: transparent !important;
+  margin-right: 10px !important
+}
+.field-description {
+  display: none
+}
+#item-linked h3 {
+  font-size: 16px
+}
+.gravatar {
+  display: none
+}
+#comments-container {
+  display: block !important
+}
+.comment {
+  width: 70% !important
+}
+.comment .comment-author-name {
+  font-weight: bold !important;
+}
+.comment .comment-reply {
+  float: none !important;
+  text-align: left !important;
+  font-weight: bold;
+  color: #60AB9D
+}
+.comment .comment-flag,
+.comment .comment-unflag {
+  float: none !important;
+  text-align: left !important;
+  font-weight: bold;
+  color: #60AB9D;
+  padding-left: 0 !important
+}
+.comment .comment-author {
+  float: none !important;
+  margin: 0 !important
+}
+input {
+  margin-bottom: 5px
+}
+.onlymobilecontent {
+  display: none
+}
+.volumeNumber {
+  text-align: center;
+  background-color: #60ab9d;
+  width: 50px;
+  color: white;
+  font-size: 11px;
+  position: relative;
+  top: 20px;
+  left: 70%;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2)
+}
+.description {
+  height: auto
+}
+.browseTitre {
+  height: auto;
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
 @media screen {
   * {
     box-sizing: border-box
@@ -1094,7 +1253,7 @@ textarea {
     display: block
   }
 }
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 699px) {
   #wrap,
   footer {
     padding: 0 24px
@@ -1191,165 +1350,6 @@ textarea {
   #search-results {
     margin-top: 12px
   }
-}
-.resource-list img {
-  max-width: 200px;
-  height: 200px;
-  object-fit: scale-down;
-  width: 200px;
-  background-color: #eee8d4
-}
-.site-page-pagination {
-  display: none
-}
-.linked-resource:hover {
-  background-color: rgba(96, 171, 157, 0.5)
-}
-.reference-heading {
-  color: darkred !important
-}
-.reference-heading a {
-  color: darkred !important
-}
-.add-value {
-  background-color: rgba(69, 179, 157, 0.3) !important;
-  margin-bottom: 12px
-}
-.opaque {
-  color: rgba(69, 179, 157, 0.6);
-  border-top: solid 1px;
-  padding-bottom: 20px;
-  padding-top: 20px
-}
-iframe {
-  -ms-appareance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  border-width: 0px;
-  border-style: none !important;
-  border-color: initial;
-  border-image: initial;
-}
-.customIcones {
-  height: 25px;
-}
-.customLocalisation {
-  display: inline;
-  color: #60AB9D
-}
-.customType {
-  text-align: center;
-}
-header {
-  position: sticky;
-  top: 0;
-  background-color: white;
-  z-index: 100;
-}
-.imageIntroAccueil {
-  height: 250px;
-  width: 250px;
-  object-fit: scale-down;
-  background-color: #eee8d4
-}
-#comment-main-container textarea {
-  height: 75px;
-  width: 400px;
-  margin-bottom: 20px
-}
-#comment-main-container input {
-  width: 400px;
-  margin-bottom: 5px
-}
-button {
-  -ms-appeareance: none;
-  -webkit-appeareance: none;
-  -moz-appeareance: none;
-  margin-bottom: 20px;
-  font-family: 'Font Awesome 5 free', 'Lato', sans-serif !important
-}
-.tagging-form input {
-  width: 400px
-}
-ul a[href="#"] {
-  color: #DCDCDC !important;
-}
-.sub-menu ul a[href="#"]:hover {
-  cursor: not-allowed
-}
-.leaflet-popup-content-wrapper img {
-  width: 200px;
-  height: 200px;
-  object-fit: scale-down;
-  background-color: #eee8d4
-}
-.customLocalisation img {
-  height: 20px !important;
-  width: 20px !important;
-  background-color: transparent !important;
-  margin-right: 10px !important
-}
-.field-description {
-  display: none
-}
-#item-linked h3 {
-  font-size: 16px
-}
-.gravatar {
-  display: none
-}
-#comments-container {
-  display: block !important
-}
-.comment {
-  width: 70% !important
-}
-.comment .comment-author-name {
-  font-weight: bold !important;
-}
-.comment .comment-reply {
-  float: none !important;
-  text-align: left !important;
-  font-weight: bold;
-  color: #60AB9D
-}
-.comment .comment-flag,
-.comment .comment-unflag {
-  float: none !important;
-  text-align: left !important;
-  font-weight: bold;
-  color: #60AB9D;
-  padding-left: 0 !important
-}
-.comment .comment-author {
-  float: none !important;
-  margin: 0 !important
-}
-input {
-  margin-bottom: 5px
-}
-.onlymobilecontent {
-  display: none
-}
-.volumeNumber {
-  text-align: center;
-  background-color: #60ab9d;
-  width: 50px;
-  color: white;
-  font-size: 11px;
-  position: relative;
-  top: 20px;
-  left: 70%;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2)
-}
-.description {
-  height: auto
-}
-.browseTitre {
-  height: auto;
-  vertical-align: middle;
-  margin-bottom: 10px;
 }
 @media (min-width: 300px) and (max-width: 699px) {
   header nav .navigation {
