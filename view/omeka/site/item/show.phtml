@@ -8,6 +8,7 @@ $this->headScript()->appendFile($this->assetUrl('js/lightslider.min.js'));
 $this->headScript()->appendFile($this->assetUrl('js/lightgallery.min.js'));
 $this->headScript()->appendFile($this->assetUrl('js/lg-video.min.js'));
 $this->headScript()->appendFile($this->assetUrl('js/lg-zoom.js'));
+
 $lightMedia = [];
 $otherMedia = [];
 foreach ($item->media() as $media) {
@@ -20,18 +21,24 @@ foreach ($item->media() as $media) {
     }
 }
 ?>
+<?php $this->trigger('view.show.before'); ?>
 <center><?php echo $this->pageTitle($item->displayTitle(), 2); ?></center>
+<div class="testContent">
+<div class="testHalfImg">
 <?php if (count($lightMedia) > 0): ?>
 <ul id="itemfiles" class="media-list">
     <?php foreach ($lightMedia as $media): ?>
         <?php $source = ($media->originalUrl()) ? $media->originalUrl() : $media->source(); ?>
-        <li data-src="<?php echo $source; ?>" data-thumb="<?php echo $escape($media->thumbnailUrl('square')); ?>" class="media resource">
+        <li data-src="<?php echo $source; ?>" data-thumb="<?php echo $escape($media->thumbnailUrl('square')); ?>" data-title="<?php if ($license = $media->value('schema:copyrightHolder')): ?><?php echo "<b>Titre : </b><br/>".$escape($media->value('dcterms:title')); echo "<br/>"; echo "<b>License : </b><br/>".$escape($media->value('schema:copyrightHolder')); ?><?php endif; ?>" class="media resource">
             <?php echo $media->render(); ?>
         </li>
     <?php endforeach; ?>
 </ul>
 <?php endif; ?>
+</div>
+<div class="testHalf">
 <?php echo $item->displayValues(); ?>
+
 <?php if (count($otherMedia) > 0): ?>
  <div id="other-media" class="property">
     <h4><?php echo $this->translate('Other Media'); ?></h4>
@@ -44,6 +51,8 @@ foreach ($item->media() as $media) {
     <?php endforeach; ?>
 </div>
 <?php endif; ?>
+</div>
+</div>
 <?php
 $page = $this->params()->fromQuery('page', 1);
 $property = $this->params()->fromQuery('property');

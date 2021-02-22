@@ -1,3 +1,8 @@
+<?php
+$escape = $this->plugin('escapeHtml');
+$translate = $this->plugin('translate');
+?>
+
 <div class="preview-block">
 
 <?php if ($this->heading): ?>
@@ -13,12 +18,27 @@ foreach ($this->resources as $resource):
     $body = $resource->value($bodyTerm);
 ?>
     <li class="<?php echo $this->resourceType; ?> resource">
-        <?php echo $resource->linkRaw($this->thumbnail($resource, 'square', ['title' => $heading])); ?>
-        <h4><?php echo $resource->link($heading); ?></h4>
-        <?php if ($description = $resource->value('dcterms:description')): ?>
-        <div class="description"><?php echo substr($description,0,75); echo $resource->link('(...)'); ?></div></br>
+        <?php if ($volumeNumber = $resource->value('schema:volumeNumber')): ?>
+        <div class="volumeNumber"><?php echo 'Vol. n. ' ?><?php echo $volumeNumber; ?></div>
         <?php endif; ?>
-        <?php if ($body): ?>
+        <?php if ($thumbnail = $this->thumbnail($resource, 'medium')): ?>
+        <?php echo '<center>'; echo $resource->linkRaw($thumbnail); echo '</center>';?>
+        <?php endif; ?>
+        <div class="customIcones">
+        <?php if ($creation = $resource->value('vra:locationCreationSite')): ?>
+        <div class="customLocalisation"><?php echo '<img title="Lieu de création : '?><?php echo $creation ?><?php echo '" src="https://digitalmuret.inha.fr/themes/DigitalMuret/asset/img/compass_icon.png" />'; ?></div>
+        <?php endif; ?>
+        <?php if ($discovery = $resource->value('vra:locationDiscoverySite')): ?>
+        <div class="customLocalisation"><?php echo '<img title="Lieu de découverte : '?><?php echo $discovery ?><?php echo '" src="https://digitalmuret.inha.fr/themes/DigitalMuret/asset/img/trowel2_icon.png" />'; ?></div>
+        <?php endif; ?>
+        <?php if ($location = $resource->value('schema:location')): ?>
+        <div class="customLocalisation"><?php echo '<img title="Lieu de conservation : '?><?php echo $location ?><?php echo '" src="https://digitalmuret.inha.fr/themes/DigitalMuret/asset/img/musee2_icon.png" />'; ?></div>
+        <?php endif; ?>
+        </div>
+        <p class="customType"><b><?php echo $resource->value('dcterms:type'); ?></b></p>
+        <div class='browseTitre'><center><h4><?php echo $resource->link($resource->value('dcterms:title')); ?></h4></center></div>
+        <?php if ($description = $resource->value('dcterms:description')): ?>
+        <div class="description"><?php echo mb_substr($description,0,75); echo $resource->link('...'); ?></div></br>
         <?php endif; ?>
     </li>
 <?php endforeach; ?>

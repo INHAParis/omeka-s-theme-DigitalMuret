@@ -1,0 +1,446 @@
+@font-face {
+  font-family: Lato;
+  src: url('./fonts/Lato/Lato-Regular.ttf');
+}
+@font-face {
+  font-family: Lato;
+  src: url('./fonts/Lato/Lato-Bold.ttf');
+  font-weight: bold;
+}
+@font-face {
+  font-family: Lato;
+  src: url('./fonts/Lato/Lato-Italic.ttf');
+  font-style: italic;
+}
+html, body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font: 10pt 'Lato', sans-serif;
+}
+#map {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font: 10pt 'Lato', sans-serif;
+}
+table {
+  -ms-appareance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-size: 1em;
+  font-family: 'Lato', sans-serif;
+  border-collapse: collapse;
+  word-break: break-word;
+  padding-top: 20px;
+}
+@media (min-width: 300px) and (max-width: 1023px) {
+  table {
+  overflow-x:auto;
+  }
+}
+tr.rowSidebar {
+  margin: 5px;
+  padding: 5px;
+  width: 600px;
+  vertical-align: top;
+}
+@media (min-width: 300px) and (max-width: 1023px) {
+  tr.rowSidebar {
+  margin: 5px;
+  padding: 5px;
+  width: 300px !important;
+  vertical-align: top;
+}
+}
+tr.rowSidebar:hover {
+  background-color: #60AB9D;
+  color: white !important;
+}
+tr.rowSidebar:hover a {
+  color: white !important;
+}
+tr.rowSidebar:hover a:hover {
+  color: #666 !important;
+}
+td#dataSiecle {
+  width: 10%;
+  text-align: center !important;
+}
+td#dataAuteur {
+  width: 20%;
+}
+td#dataTitre {
+  width: 20%;
+}
+td#dataLieu {
+  width: 20%;
+}
+td#dataPhoto {
+  text-align: center !important;
+  width: 20%;
+}
+td#dataIcon {
+  vertical-align: middle !important;
+  width: 10%;
+}
+th.teteListe {
+  width: 20%;
+  vertical-align: middle !important;
+  text-align: center !important;
+  height: 40px;
+}
+.teteListe {
+  position: block;
+}
+input[type=text] {
+  -ms-appareance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none !important;
+  border-radius: 0px;
+  background-color: #60AB9D;
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2), 0 2px 5px 0 rgba(0,0,0,0.19);
+  height: 26px;
+}
+input[type=submit] {
+  -ms-appareance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none !important;
+  border-radius: 0px;
+  background-color: #60AB9D;
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2), 0 2px 5px 0 rgba(0,0,0,0.19);
+  height: 26px;
+}
+input#cacherFiltre {
+  -ms-appareance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none !important;
+  border-radius: 0px;
+  background-color: darkred;
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2), 0 2px 5px 0 rgba(0,0,0,0.19);
+  height: 26px;
+}
+input#cacherFiltre:hover {
+  background-color: #373737;
+}
+input#cacherFiltreSiecles {
+  -ms-appareance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none !important;
+  border-radius: 0px;
+  background-color: darkred;
+  color: white;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2), 0 2px 5px 0 rgba(0,0,0,0.19);
+  height: 26px;
+}
+input#cacherFiltreSiecles:hover {
+  background-color: #373737;
+}
+input:hover {
+  background-color: #373737;
+}
+select {
+  -ms-appareance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none !important;
+  border-radius: 0px;
+  background-color: #60AB9D;
+  color: white;
+  font-family: "Lato",sans-serif;
+  font-size: 14px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2), 0 2px 5px 0 rgba(0,0,0,0.19);
+  width: 230px;
+  text-align: center;
+  line-height: 1.9;
+  height: 26px;
+}
+select:hover {
+  background-color: #373737;
+}
+option {
+  font-family: "Lato",sans-serif;
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.9;
+  background-color: #60AB9D !important;
+}
+::placeholder {
+  color: white;
+  opacity: 1;
+  font-size: 14px;
+  line-height: 1.4;
+  font-family: "Lato",sans-serif;
+}
+p {
+  -ms-appareance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #262626;
+  font-size: 14px !important;
+  line-height: 1.9;
+  font-family: "Lato",sans-serif;
+}
+h1.sidebar-header {
+  font-size: 18px;
+  line-height: 1.9;
+  font-family: "Lato",sans-serif;
+  vertical-align: middle;
+}
+span.sidebar-close {
+  vertical-align: middle;
+}
+a#iconLink:hover {
+  color: #666;
+}
+a#zoomAll {
+  color: #262626;
+  font-size: 20px;
+  text-align: center !important;
+  text-decoration: none;
+}
+.fa-sort:hover {
+  color: #60AB9D;
+}
+a {
+  text-decoration: none;
+  color: #60AB9D;
+}
+a:hover {
+  color: #373737;
+}
+#lamp:hover {
+  color: #666;
+}
+h4.titreSidebar {
+  font-family: "Lato",sans-serif;
+  font-size:24px;
+  color: #60AB9D;
+  border-bottom: 1px solid silver;
+  padding-bottom: 10px;
+  font-weight: 400;
+}
+header {
+  position: fixed;
+  height: 30px;
+  margin-bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  background: #60AB9D;
+}
+body > div.container {
+  position: fixed;
+  top: calc(30px);
+  bottom: 0;
+  right: 0;
+  left: 0;
+  vertical-align: top;
+}
+#modePaysage {
+  -ms-transform: rotate(270deg);
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+.blink {
+  color:red; background-color:#60AB9D; 
+  animation: allblink 2s infinite;
+}
+  @keyframes allblink { 
+0% { }
+50% { color:red; background-color:darkred; } 
+}
+hr {
+  color: #373737;
+}
+  @media (min-width: 1024px) {
+#coucheActive {
+  display:none;
+}
+}
+  @media (min-width: 320px) and (max-width: 549px) {
+#coucheActive {
+  position: fixed;
+  display: block;
+  width: 150px;
+  height: 35px;
+  left: 25%;
+  right: 0;
+  bottom: 20px;
+  background-color: rgba(96,171,157,0.5);
+  z-index: 700;
+  text-align: center;
+}
+  }
+  @media (min-width: 550px) and (max-width: 1023px) {
+#coucheActive {
+  position: fixed;
+  display: block;
+  width: 150px;
+  height: 35px;
+  left: 40%;
+  right: 0;
+  bottom: 20px;
+  background-color: rgba(96,171,157,0.5);
+  z-index: 700;
+  text-align: center;
+}
+  }
+  @media (min-width: 320px) and (max-width: 549px) {
+.leaflet-control-layers {
+  margin-bottom: 60px !important;
+}}
+  @media (min-width: 1024px) {
+#commencer {
+  display:none;
+}
+}
+  @media (min-width: 320px) and (max-width: 767px) {
+#commencer {
+  position: fixed;
+  display: block;
+  width: 150px;
+  height: 35px;
+  top: 5px;
+  right: 45px;
+  background-color: rgba(240,230,140,0.5);
+  z-index: 1000;
+  text-align: right;
+  border-radius: 5px;
+}
+  }
+  @media (min-width: 768px) and (max-width: 1023px) {
+#commencer {
+  position: fixed;
+  display: block;
+  width: 150px;
+  height: 35px;
+  top: 10px;
+  right: 60px;
+  background-color: rgba(240,230,140,0.5);
+  z-index: 1000;
+  text-align: right;
+  border-radius: 5px;
+}
+  }
+p#startMobile {
+  font-family: 'Lato', sans-serif;
+  font-size: 20px !important;
+  vertical-align: middle;
+}
+/* Customize the label (the container) */
+label {
+  -ms-appareance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.container {
+  -ms-appareance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px !important;
+}
+/* Hide the browser's default checkbox */
+.container input {
+  -ms-appareance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  background-color: #eee;
+}
+.checkSiecle {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px !important;
+}
+.checkSiecle:hover {
+  background-color: rgba(96,171,157,0.5);
+}
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+/* When the checkbox is checked, add a green agorha background */
+.container input:checked ~ .checkmark {
+  background-color: #60AB9D;
+}
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 5px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.imageIntroAccueil {
+ height: 250px;
+ width: 250px;
+ object-fit: scale-down;
+ background-color: #eee8d4
+}

@@ -1,42 +1,26 @@
 <?php
-$escape = $this->plugin('escapeHtml');
 $translate = $this->plugin('translate');
-
-$this->htmlElement('body')->appendAttribute('class', 'item resource browse');
-
-$query = $this->params()->fromQuery();
-
-$sortHeadings = [
-    [
-        'label' => $translate('Identifier'),
-        'value' => 'dcterms:identifier'
-    ],
-    [
-        'label' => $translate('Title'),
-        'value' => 'dcterms:title'
-    ],
-    [
-        'label' => $translate('Created'),
-        'value' => 'created'
-    ],
-    [
-        'label' => $translate('Type'),
-        'value' => 'dcterms:type'
-    ],
-];
-
+$hyperlink = $this->plugin('hyperlink');
+$url = $this->plugin('url');
+$this->htmlElement('body')->appendAttribute('class', 'index search');
 ?>
-<?php if (isset($itemSet)): ?>
-<?php $this->htmlElement('body')->appendAttribute('class', 'item-set');
-    $query['item_set_id'] = $itemSet->id(); ?>
-<?php endif; ?>
-<?php echo $this->searchFilters(); ?>
 
-<div class="browse-controls">
-    <?php echo $this->pagination(); ?>
-    <center><?php echo $this->hyperlink($translate('Advanced search'), $this->url('site/resource', ['controller' => 'item', 'action' => 'search'], ['query' => $query], true), ['class' => 'advanced-search']); ?></center>
-    <?php echo $this->sortSelector($sortHeadings); ?>
-</div>
+<?php echo $this->pageTitle(sprintf($this->translate('Search results for “%s”'), $query)); ?>
+
+<div>
+    <h2><?php echo 'Objets' ; ?></h2>
+    <?php if ($items): ?>
+
+    <?php echo $this->hyperlink(
+        sprintf($this->translate('Voir tous les résultats'), $itemsTotal),
+        $this->url(
+            'site/resource',
+            ['controller' => 'item', 'action' => 'browse'],
+            ['query' => ['fulltext_search' => $query]],
+            true
+        )
+    ); ?>
+
 <ul class="resource-list">
     <?php foreach ($items as $item): ?>
     <li class="item resource">
@@ -65,5 +49,31 @@ $sortHeadings = [
     </li>
     <?php endforeach; ?>
 </ul>
-<?php echo $this->pagination(); ?>
-<?php $this->trigger('view.browse.after'); ?>
+
+    <?php echo $this->hyperlink(
+        sprintf($this->translate('Voir tous les résultats'), $itemsTotal),
+        $this->url(
+            'site/resource',
+            ['controller' => 'item', 'action' => 'browse'],
+            ['query' => ['fulltext_search' => $query]],
+            true
+        )
+    ); ?>
+
+    <?php else: ?>
+    <p><?php echo $this->translate('Aucun objet a été trouvé'); ?></p>
+    <?php endif; ?>
+</div>
+
+<div>
+    <h2><?php echo 'Articles' ; ?></h2>
+    <?php if ($pages): ?>
+    <ul class="searchPages">
+        <?php foreach ($pages as $page): ?>
+        <li class="listPages"><h4><?php echo $page->link($page->title()); ?></h4></li>
+        <?php endforeach; ?>
+    </ul>
+    <?php else: ?>
+    <p><?php echo $this->translate('Aucun article a été trouvé'); ?></p>
+    <?php endif; ?>
+</div>

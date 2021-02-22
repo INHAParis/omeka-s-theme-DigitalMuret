@@ -9,20 +9,37 @@ $pagination->setFragment($fragment);
 ?>
 <div id="linked-resources">
 <?php foreach ($subjectValues as $term => $values): ?>
-<table>
-<tbody>
+<ul class="resource-list">
     <?php foreach ($values as $value): ?>
     <?php
     $template = $value->resource()->resourceTemplate();
     $templateProperty = $template ? $template->resourceTemplateProperty($value->property()->Id()) : null;
     $altLabel = $templateProperty ? $templateProperty->alternateLabel() : null;
     ?>
-    <tr class="linked-resource">
-        <td><?php echo $value->resource()->linkPretty(); ?></td>
-    </tr>
+    <li class="item resource">
+        <?php if ($volumeNumber = $value->resource()->value('schema:volumeNumber')): ?>
+        <div class="volumeNumber"><?php echo 'Vol. n° ' ?><?php echo $volumeNumber; ?></div>
+        <?php endif; ?>
+        <center><?php echo $value->resource()->linkRaw($this->thumbnail($value->resource(), 'medium')); ?></center>
+        <div class="customIcones">
+        <?php if ($creation = $value->resource()->value('vra:locationCreationSite')): ?>
+        <div class="customLocalisation"><?php echo '<img title="Lieu de création : '?><?php echo $creation ?><?php echo '" src="https://digitalmuret.inha.fr/themes/DigitalMuret/asset/img/compass_icon.png" />'; ?></div>
+        <?php endif; ?>
+        <?php if ($discovery = $value->resource()->value('vra:locationDiscoverySite')): ?>
+        <div class="customLocalisation"><?php echo '<img title="Lieu de découverte : '?><?php echo $discovery ?><?php echo '" src="https://digitalmuret.inha.fr/themes/DigitalMuret/asset/img/trowel2_icon.png" />'; ?></div>
+        <?php endif; ?>
+        <?php if ($location = $value->resource()->value('schema:location')): ?>
+        <div class="customLocalisation"><?php echo '<img title="Lieu de conservation : '?><?php echo $location ?><?php echo '" src="https://digitalmuret.inha.fr/themes/DigitalMuret/asset/img/musee2_icon.png" />'; ?></div>
+        <?php endif; ?>
+        </div>
+        <p class="customType"><b><?php echo $value->resource()->value('dcterms:type'); ?></b></p>
+        <div class='browseTitre'><center><h4><?php echo $value->resource()->linkRaw($value->resource()->value('dcterms:title')); ?></h4></center></div>
+        <?php if ($description = $value->resource()->value('dcterms:description')): ?>
+        <div class="description"><?php echo mb_substr($description,0,75); echo $value->resource()->linkRaw('...'); ?></div></br>
+        <?php endif; ?>
+    </li>
     <?php endforeach; ?>
-</tbody>
-</table>
+</ul>
 <?php endforeach; ?>
 
 <?php echo ($totalCount > $perPage) ? '<div class="linked-footer">' . $pagination . '</div>' : ''; ?>
